@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +14,7 @@ public class Card implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String holderName;
-
+	@Id
 	private String number;
 	
 	private Date expiration;

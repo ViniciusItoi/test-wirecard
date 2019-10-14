@@ -6,6 +6,7 @@ import java.math.BigInteger;
 import java.text.DecimalFormat;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,21 +14,24 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="TB_PAYMENT")
-public class Payment implements Serializable{
+@Table(name = "TB_PAYMENT")
+public class Payment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id; 
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
 	@NotNull
 	private DecimalFormat amount;
 	@NotNull
 	private String type;
-	
+
 	private Card card;
+
+	@Enumerated
+	private StatusEnum Status;
 
 	public long getId() {
 		return id;
@@ -60,5 +64,13 @@ public class Payment implements Serializable{
 	public void setCard(Card card) {
 		this.card = card;
 	}
-	
+
+	public StatusEnum getStatus() {
+		return Status;
+	}
+
+	public void setStatus(StatusEnum status) {
+		Status = status;
+	}
+
 }
